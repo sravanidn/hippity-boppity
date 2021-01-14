@@ -1,0 +1,27 @@
+class LinearSearch:
+    def __init__(self):
+        self.search_list = []
+        self.to_search = 0
+        self.left = 0
+        self.right = 0
+
+    def linear_search(self):
+        if self.search_list[self.right] == self.to_search:
+            return self.right
+        elif self.search_list[self.left] == self.to_search:
+            return self.left
+        elif self.right < 1:
+            return -1
+        else:
+            self.left += 1
+            self.right -= 1
+            return self.linear_search()
+
+
+search = LinearSearch()
+search.search_list = [2, 6, 8, 10, 43]
+search.to_search = 11
+search.right = len(search.search_list) - 1
+
+flag = search.linear_search()
+print(flag)
